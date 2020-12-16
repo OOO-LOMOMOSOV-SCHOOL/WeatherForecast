@@ -8,7 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +28,20 @@ public class MainActivity extends AppCompatActivity {
     TextView day5;
     TextView day6;
     TextView day7;
+    TextView pop1;
+    TextView pop2;
+    TextView pop3;
+    TextView pop4;
+    TextView pop5;
+    TextView pop6;
+    TextView pop7;
+    TextView date1;
+    TextView date2;
+    TextView date3;
+    TextView date4;
+    TextView date5;
+    TextView date6;
+    TextView date7;
     String url="http://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude{...}&units{...}&appid{...}";
     String apikey="3a136475c83d56418cedc74414c4f2ba";
     String units = "metric";
@@ -43,7 +61,36 @@ public class MainActivity extends AppCompatActivity {
         day5=findViewById(R.id.day5);
         day6=findViewById(R.id.day6);
         day7=findViewById(R.id.day7);
+        date1=findViewById(R.id.date1);
+        date2=findViewById(R.id.date2);
+        date3=findViewById(R.id.date3);
+        date4=findViewById(R.id.date4);
+        date5=findViewById(R.id.date5);
+        date6=findViewById(R.id.date6);
+        date7=findViewById(R.id.date7);
+        pop1=findViewById(R.id.pop1);
+        pop2=findViewById(R.id.pop2);
+        pop3=findViewById(R.id.pop3);
+        pop4=findViewById(R.id.pop4);
+        pop5=findViewById(R.id.pop5);
+        pop6=findViewById(R.id.pop6);
+        pop7=findViewById(R.id.pop7);
         tv=findViewById(R.id.tv);
+
+        Date currentDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd", Locale.getDefault());
+        String dateStr = dateFormat.format(currentDate);
+        Integer dateInt =Integer.parseInt (dateStr);
+        date1.setText(String.valueOf(dateInt));
+        date2.setText(String.valueOf(dateInt+1));
+        date3.setText(String.valueOf(dateInt+2));
+        date4.setText(String.valueOf(dateInt+3));
+        date5.setText(String.valueOf(dateInt+4));
+        date6.setText(String.valueOf(dateInt+5));
+        date7.setText(String.valueOf(dateInt+6));
+
+
+
     }
     public static void SetIcon(TextView day,Integer id){
         if (id >= 200 && id <= 232){
@@ -103,60 +150,69 @@ public class MainActivity extends AppCompatActivity {
                 else if(!response.isSuccessful()) {
                     Toast.makeText(MainActivity.this, response.code(), Toast.LENGTH_LONG).show();
                 }else {
-                   Toast.makeText(MainActivity.this, "sucsess", Toast.LENGTH_LONG).show();
+                     Toast.makeText(MainActivity.this, "sucsess", Toast.LENGTH_LONG).show();
 
                }
                 ExampleList mydatalist= (ExampleList) response.body();
 
                 Daily daily1=mydatalist.getDaily(0);
-                Double pop1 = daily1.getPop();
+                Double p1 = daily1.getPop();
                 List<Weather_> wl1= daily1.getWeather();
                 Weather_ w1= wl1.get(0);
                 Integer id1= w1.getId();
                 SetIcon(day1,id1);
+                pop1.setText(String.valueOf(Math.round (p1))+"%");
 
                 Daily daily2=mydatalist.getDaily(1);
-                Double pop2 = daily2.getPop();
+                Double p2 = daily2.getPop();
                 List<Weather_> wl2= daily1.getWeather();
                 Weather_ w2= wl2.get(0);
                 Integer id2= w2.getId();
                 SetIcon(day2,id2);
+                pop2.setText(String.valueOf(Math.round (p2*100))+"%");
 
                 Daily daily3=mydatalist.getDaily(2);
-                Double pop3 = daily3.getPop();
+                Double p3 = daily3.getPop();
                 List<Weather_> wl3= daily3.getWeather();
                 Weather_ w3= wl3.get(0);
                 Integer id3= w3.getId();
                 SetIcon(day3,id3);
+                pop3.setText(String.valueOf(Math.round(p3*100))+"%");
 
                 Daily daily4=mydatalist.getDaily(3);
-                Double pop4 = daily4.getPop();
+                Double p4 = daily4.getPop();
                 List<Weather_> wl4= daily4.getWeather();
                 Weather_ w4= wl4.get(0);
                 Integer id4= w4.getId();
                 SetIcon(day4,id4);
+                pop4.setText(String.valueOf(Math.round (p4*100))+"%");
 
                 Daily daily5=mydatalist.getDaily(4);
-                Double pop5 = daily5.getPop();
+                Double p5 = daily5.getPop();
                 List<Weather_> wl5= daily5.getWeather();
                 Weather_ w5= wl5.get(0);
                 Integer id5= w5.getId();
                 SetIcon(day5,id5);
+                pop5.setText(String.valueOf(Math.round (p5*100))+"%");
 
                 Daily daily6=mydatalist.getDaily(5);
-                Double pop6 = daily6.getPop();
+                Double p6 = daily6.getPop();
                 List<Weather_> wl6= daily6.getWeather();
                 Weather_ w6= wl6.get(0);
                 Integer id6= w6.getId();
                 SetIcon(day6,id6);
+                pop6.setText(String.valueOf(Math.round (p6*100))+"%");
 
                 Daily daily7=mydatalist.getDaily(6);
-                Double pop7 = daily7.getPop();
+                Double p7 = daily7.getPop();
                 List<Weather_> wl7= daily7.getWeather();
                 Weather_ w7= wl7.get(0);
                 Integer id7= w7.getId();
                 SetIcon(day7,id7);
-                Wash(pop1,pop2,pop3,pop4);
+                pop7.setText(String.valueOf(Math.round (p7*100))+"%");
+
+
+                Wash(p1,p2,p3,p4);
 
 
 

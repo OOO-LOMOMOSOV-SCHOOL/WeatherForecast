@@ -7,4 +7,8 @@ ArrayList<Daily> daily;
     public Daily getDaily(int i) {
         return daily.get(i);
     }
+
+    public void setDaily(ArrayList<Daily> daily) {
+        this.daily = daily;
+    }
 }
