@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".INFO">
+
+    <TextView
+        android:id="@+id/Forecast"
+        android:layout_width="280dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginLeft="65dp"
+        android:text="FORECAST"
+        android:textColor="#040303"
+        android:textSize="55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Weather" />
+
+    <Button
+        android:id="@+id/btn_info"
+        android:layout_width="218dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginRight="97dp"
+        android:layout_marginBottom="93dp"
+        android:text="ПРОГНОЗ"
+        android:textSize="30"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Forecast" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="218dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginRight="97dp"
+        android:layout_marginBottom="200dp"
+        android:text="АВТОМОЙКИ"
+        android:textSize="20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/Weather"
+        android:layout_width="280dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="8dp"
+        android:text="WEATHER"
+        android:textColor="#121212"
+        android:textSize="55"
+        app:layout_constraintBottom_toTopOf="@+id/Forecast"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
