@@ -2,8 +2,10 @@ package com.example.weatherforecast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +22,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    Button btnBack;
     TextView day1;
     TextView day2;
     TextView day3;
@@ -54,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnBack= (Button) findViewById(R.id.backButton);
+
         day1=findViewById(R.id.day1);
         day2=findViewById(R.id.day2);
         day3=findViewById(R.id.day3);
@@ -149,10 +155,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!response.isSuccessful()) {
                     Toast.makeText(MainActivity.this, response.code(), Toast.LENGTH_LONG).show();
-                }else {
-                     Toast.makeText(MainActivity.this, "sucsess", Toast.LENGTH_LONG).show();
+                }//else {
+                   //  Toast.makeText(MainActivity.this, "sucsess", Toast.LENGTH_LONG).show();
 
-               }
+               //}
                 ExampleList mydatalist= (ExampleList) response.body();
 
                 Daily daily1=mydatalist.getDaily(0);
@@ -234,5 +240,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent i;
+        i = new Intent(this, INFO.class);
+        startActivity(i);
     }
 }
